@@ -1,0 +1,11 @@
+#toolbar {
+  justify-content: space-between;
+}
+
+#title {
+  text-decoration: none;
+}
+
+#title h3 {
+  color: #fff;
+}

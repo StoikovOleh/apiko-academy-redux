@@ -1,24 +1,35 @@
-import logo from './logo.svg';
+import { Route } from 'react-router-dom';
+
+import { Navbar } from './components/Navbar';
+import { Busket } from './pages/Busket';
+import { Dashboard } from './pages/Dashboard';
+
 import './App.css';
+import { useState } from 'react';
 
 function App() {
+  const [cardItems, setCard] = useState([]);
+
+  const handleAddToCard = (newItem) => {
+    if (!cardItems.find((item) => item.id === newItem.id)) {
+      setCard([...cardItems, newItem]);
+    }
+  };
+  
+  const handleRemoveFromCard = (id) => {
+    setCard(cardItems.filter(item => item.id !== id));
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Navbar cardItems={cardItems} />
+      <Route exact path="/">
+        <Dashboard addToCard={handleAddToCard} />
+      </Route>
+      <Route path="/busket">
+        <Busket cardItems={cardItems} removeFromBusket={handleRemoveFromCard}/>
+      </Route>
+    </>
   );
 }
 
