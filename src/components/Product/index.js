@@ -5,7 +5,7 @@ import './styles.css';
 export const Product = ({
   product,
   addToCard,
-  removeFromBusket,
+  removeFromCard,
   isBusket = false,
 }) => {
   const handleAddToCard = () => {
@@ -13,7 +13,7 @@ export const Product = ({
   };
 
   const handleRemoveFromCard = () => {
-    removeFromBusket(product.id);
+    removeFromCard(product.id);
   };
 
   return (

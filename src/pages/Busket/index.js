@@ -2,13 +2,13 @@ import { Product } from '../../components/Product';
 
 import './styles.css';
 
-export const Busket = ({ cardItems, removeFromBusket }) =>
+export const Busket = ({ cardItems, removeFromCard }) =>
   cardItems.length ? (
     <div className="container">
       {cardItems.map((product) => (
         <Product
           product={product}
-          removeFromBusket={removeFromBusket}
+          removeFromCard={removeFromCard}
           isBusket
         />
       ))}
