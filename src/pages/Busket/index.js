@@ -1,9 +1,13 @@
+import { useContext } from 'react';
 import { Product } from '../../components/Product';
+import { AppContext } from '../../store';
 
 import './styles.css';
 
-export const Busket = ({ cardItems, removeFromCard }) =>
-  cardItems.length ? (
+export const Busket = () => {
+  const { cardItems, removeFromCard } = useContext(AppContext);
+  
+  return cardItems.length ? (
     <div className="container">
       {cardItems.map((product) => (
         <Product
@@ -15,4 +19,4 @@ export const Busket = ({ cardItems, removeFromCard }) =>
     </div>
   ) : (
     <div className="empty-container">Sorry there's no items</div>
-  );
+  )};

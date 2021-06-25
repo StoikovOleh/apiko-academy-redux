@@ -6,6 +6,7 @@ import { Busket } from './pages/Busket';
 import { Dashboard } from './pages/Dashboard';
 
 import './App.css';
+import { AppContext } from './store';
 
 
 function App() {
@@ -22,15 +23,15 @@ function App() {
   };
 
   return (
-    <>
-      <Navbar cardItems={cardItems} />
+    <AppContext.Provider value={{cardItems, addToCard, removeFromCard}}>
+      <Navbar />
       <Route exact path="/">
-        <Dashboard addToCard={addToCard} />
+        <Dashboard />
       </Route>
       <Route path="/busket">
-        <Busket cardItems={cardItems} removeFromCard={removeFromCard}/>
+        <Busket />
       </Route>
-    </>
+    </AppContext.Provider>
   );
 }
 
